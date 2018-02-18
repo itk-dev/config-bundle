@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ItkDev\ConfigBundle\Service\FormHelper">
+            <argument key="$container" id="service_container" type="service"/>
+            <argument key="$formTypes" type="collection">
+                <argument key="text">Symfony\Component\Form\Extension\Core\Type\TextType</argument>
+                <argument key="textarea">Symfony\Component\Form\Extension\Core\Type\TextareaType</argument>
+                <argument key="checkbox">Symfony\Component\Form\Extension\Core\Type\CheckboxType</argument>
+                <argument key="color">Symfony\Component\Form\Extension\Core\Type\ColorType</argument>
+                <argument key="integer">Symfony\Component\Form\Extension\Core\Type\IntegerType</argument>
+                <argument key="date">Symfony\Component\Form\Extension\Core\Type\DateType</argument>
+                <argument key="datetime">Symfony\Component\Form\Extension\Core\Type\DateTimeType</argument>
+                <argument key="time">Symfony\Component\Form\Extension\Core\Type\TimeType</argument>
+                <argument key="ckeditor">Ivory\CKEditorBundle\Form\Type\CKEditorType</argument>
+                <argument key="file">Symfony\Component\Form\Extension\Core\Type\FileType</argument>
+            </argument>
+            <argument key="$locales"/>
+        </service>
+
+        <service id="ItkDev\ConfigBundle\Controller\SettingController">
+            <argument id="ItkDev\ConfigBundle\Service\FormHelper" type="service"/>
+            <argument id="craue_config" type="service"/>
+        </service>
+    </services>
+</container>

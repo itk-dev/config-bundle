@@ -1,0 +1,25 @@
+easy_admin:
+    entities:
+        Setting:
+            controller: ItkDev\ConfigBundle\Controller\SettingController
+            class: ItkDev\ConfigBundle\Entity\Setting
+            disabled_actions: [new, delete]
+            list:
+                fields:
+                    # - property: section
+                    - property: name
+                    - property: description
+                    # - property: type
+                    # - property: formType
+                    - property: value
+                      label: Value
+                      template: '@ItkDevConfig/easy_admin/Setting/display_value.html.twig'
+
+            edit:
+                fields:
+                    - property: name
+                      type_options:
+                          disabled: true
+                    - property: description
+                      type_options:
+                          disabled: true
