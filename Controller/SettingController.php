@@ -36,9 +36,13 @@ class SettingController extends BaseAdminController
 
         if ($entity instanceof Setting) {
             list($type, $propertyPath) = $this->getFormTypeAndPropertyPath($entity);
-            $form->add('value', $type, [
+            $options = [
                 'property_path' => $propertyPath,
-            ]);
+            ];
+            if (isset($entityProperties['value']['type_options'])) {
+                $options += $entityProperties['value']['type_options'];
+            }
+            $form->add('value', $type, $options);
         }
 
         return $form;
@@ -55,10 +59,6 @@ class SettingController extends BaseAdminController
     {
         $type = $setting->getFormType() ?: AbstractSettingType::TYPE_STRING;
         $formType = $this->formHelper->getFormType($type);
-//        if ($formType instanceof AbstractSettingType) {
-//            $type = $formType->getBaseType();
-//        }
-
         $propertyPath = $setting->getPropertyPath();
 
         return [$formType, $propertyPath];

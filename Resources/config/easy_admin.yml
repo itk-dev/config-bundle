@@ -1,4 +1,10 @@
 easy_admin:
+    design:
+        form_theme:
+            - …
+            # Nice(r) display of "name" and "description" on edit Setting page.
+            - '@ItkDevConfig/easy_admin/form/setting.html.twig'
+
     entities:
         Setting:
             controller: ItkDev\ConfigBundle\Controller\SettingController
@@ -18,8 +24,16 @@ easy_admin:
             edit:
                 fields:
                     - property: name
+                      # Important: "name" must be disabled to not overwrite the name when saving a setting
                       type_options:
                           disabled: true
+                    - property: value
+                      # type_options:
+                      #     Optionally, make "value" non-required
+                      #     required: false
+                      #     Optionally, hide the "Value" label
+                      #     label: false
                     - property: description
+                      # Important: "description" must be disabled to not overwrite the name when saving a setting
                       type_options:
                           disabled: true

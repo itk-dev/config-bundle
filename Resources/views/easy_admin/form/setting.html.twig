@@ -1,0 +1,17 @@
+{% block _setting_name_widget %}
+    <div class="setting-name {{ attr.class|default('') }}">
+        {{ value|trans }}
+    </div>
+{% endblock %}
+
+{% block _setting_description_widget %}
+    <div class="setting-description {{ attr.class|default('') }}">
+    {% if not attr.raw is defined or not attr.raw %}
+        <div style="white-space: pre">
+            {{- value -}}
+        </div>
+    {% else %}
+        {{- value|raw -}}
+    {% endif %}
+    </div>
+{% endblock %}

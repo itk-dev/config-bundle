@@ -82,10 +82,7 @@ values
 
 Easy admin:
 
-```yml
-imports:
-    - { resource: '@ItkDevConfigBundle/Resources/config/easy_admin.yml' }
-```
+See [Resources/config/easy_admin.yml](Resources/config/easy_admin.yml) for an example Easy Admin configuration for Settings.
 
 Twig:
 
