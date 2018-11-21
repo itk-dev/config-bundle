@@ -10,11 +10,11 @@
         }
     ],
     "require": {
-        "symfony/symfony": "^3.0",
+        "symfony/framework-bundle": "~3.0|~4.0",
         "doctrine/dbal": "^2.5",
         "easycorp/easyadmin-bundle": "^1.17",
         "craue/config-bundle": "~2.1",
-        "egeloen/ckeditor-bundle": "^6.0"
+        "friendsofsymfony/ckeditor-bundle": "^1.2"
     },
     "autoload": {
         "psr-4": {
@@ -36,15 +36,15 @@
             "@check-coding-standards/php-cs-fixer",
             "@check-coding-standards/phpcs"
         ],
-        "fix-coding-standards/php-cs-fixer": [
+        "apply-coding-standards/php-cs-fixer": [
             "php -n vendor/bin/php-cs-fixer --config=.php_cs.dist fix"
         ],
-        "fix-coding-standards/phpcs": [
+        "apply-coding-standards/phpcs": [
             "vendor/bin/phpcbf --standard=phpcs.xml.dist"
         ],
-        "fix-coding-standards": [
-            "@fix-coding-standards/php-cs-fixer",
-            "@fix-coding-standards/phpcs"
+        "apply-coding-standards": [
+            "@apply-coding-standards/php-cs-fixer",
+            "@apply-coding-standards/phpcs"
         ]
     }
 }

@@ -42,7 +42,7 @@ class FormHelper
     {
         if (!isset($this->formTypes[$type])) {
             if ($this->container->has($type)) {
-                return get_class($this->container->get($type));
+                return \get_class($this->container->get($type));
             }
 
             throw new \RuntimeException('Invalid type: '.$type);

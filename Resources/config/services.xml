@@ -16,7 +16,7 @@
                 <argument key="date">Symfony\Component\Form\Extension\Core\Type\DateType</argument>
                 <argument key="datetime">Symfony\Component\Form\Extension\Core\Type\DateTimeType</argument>
                 <argument key="time">Symfony\Component\Form\Extension\Core\Type\TimeType</argument>
-                <argument key="ckeditor">Ivory\CKEditorBundle\Form\Type\CKEditorType</argument>
+                <argument key="ckeditor">FOS\CKEditorBundle\Form\Type\CKEditorType</argument>
                 <argument key="file">Symfony\Component\Form\Extension\Core\Type\FileType</argument>
             </argument>
             <argument key="$locales"/>
@@ -25,6 +25,7 @@
         <service id="ItkDev\ConfigBundle\Controller\SettingController">
             <argument id="ItkDev\ConfigBundle\Service\FormHelper" type="service"/>
             <argument id="craue_config" type="service"/>
+            <tag name="controller.service_arguments"/>
         </service>
     </services>
 </container>

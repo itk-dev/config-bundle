@@ -93,9 +93,13 @@ See https://github.com/craue/CraueConfigBundle/#usage-in-twig-templates
 ## Rich text
 
 To use the form type `ckeditor`, you have to enable
-[IvoryCKEditorBundle](http://symfony.com/doc/master/bundles/IvoryCKEditorBundle/index.html)
+[FOSCKEditorBundle](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/index.html)
 (which is already installed).
 
-Follow steps 2–4 on
-https://symfony.com/doc/master/bundles/EasyAdminBundle/integration/ivoryckeditorbundle.html#installing-the-rich-text-editor
-to enable the bundle.
+Update your `composer.json` using the guidelines at
+https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html#composer-script,
+e.g. add
+
+```json
+    "ckeditor:install --release=basic --tag=4.6.0 --clear=drop --exclude=samples": "symfony-cmd",
+```
