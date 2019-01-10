@@ -11,7 +11,7 @@
 namespace ItkDev\ConfigBundle\Controller;
 
 use Craue\ConfigBundle\Util\Config;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController as BaseAdminController;
 use ItkDev\ConfigBundle\Entity\Setting;
 use ItkDev\ConfigBundle\Form\AbstractSettingType;
 use ItkDev\ConfigBundle\Service\FormHelper;

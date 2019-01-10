@@ -3,21 +3,21 @@
 ## Installation
 
 ```sh
-composer require itk-dev/settings-bundle "^2.0"
+composer require itk-dev/settings-bundle "^3.0"
 ```
 
 Enable the bundle in `app/AppKernel.php`:
 
 ```php
 public function registerBundles() {
-	$bundles = [
-		// …
+    $bundles = [
+        // …
         // Start of required dependencies of ItkDevConfigBundle
         new Craue\ConfigBundle\CraueConfigBundle(),
         new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
         // End of required dependencies for ItkDevConfigBundle
         new ItkDev\ConfigBundle\ItkDevConfigBundle(),
-	];
+    ];
     // …
 }
 ```
@@ -92,7 +92,7 @@ See https://github.com/craue/CraueConfigBundle/#usage-in-twig-templates
 
 ## Rich text
 
-To use the form type `ckeditor`, you have to enable
+To use the form type `fos_ckeditor`, you have to enable
 [FOSCKEditorBundle](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/index.html)
 (which is already installed).
 
