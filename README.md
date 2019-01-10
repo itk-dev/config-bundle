@@ -3,7 +3,7 @@
 ## Installation
 
 ```sh
-composer require itk-dev/settings-bundle "^1.0"
+composer require itk-dev/settings-bundle "^2.0"
 ```
 
 Enable the bundle in `app/AppKernel.php`:
