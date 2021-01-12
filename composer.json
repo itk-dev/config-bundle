@@ -10,10 +10,10 @@
         }
     ],
     "require": {
-        "symfony/framework-bundle": "~3.0|~4.0",
+	"symfony/framework-bundle": "~3.4|~4.4|~5.1",
         "doctrine/dbal": "^2.5",
         "easycorp/easyadmin-bundle": "^2.0",
-        "craue/config-bundle": "~2.2",
+        "craue/config-bundle": "^2.2",
         "friendsofsymfony/ckeditor-bundle": "^2.0"
     },
     "autoload": {

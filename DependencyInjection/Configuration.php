@@ -25,10 +25,9 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('itk_dev_config');
-
-        $rootNode
+        $treeBuilder = new TreeBuilder('itk_dev_config');
+        $treeBuilder
+            ->getRootNode()
             ->children()
             ->variableNode('form_types')->defaultValue([])->end()
             ->variableNode('locales')->defaultValue([])->end()
