@@ -27,6 +27,14 @@
             <argument id="ItkDev\ConfigBundle\Service\FormHelper" type="service"/>
             <argument id="craue_config" type="service"/>
             <tag name="controller.service_arguments"/>
+            <!-- For some yet unknown reason we have to set the container explicitly
+
+                 LogicException:
+"ItkDev\ConfigBundle\Controller\SettingController" has no container set, did you forget to define it as a service subscriber?
+            -->
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
         </service>
     </services>
 </container>
