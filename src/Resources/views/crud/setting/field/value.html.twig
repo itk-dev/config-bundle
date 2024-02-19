@@ -1,0 +1,59 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+{% set name = entity.instance.name %}
+{% set type = entity.instance.type %}
+{% set id = 'setting-' ~ name|replace({'.': '-'}) %}
+{% trans_default_domain 'itkdev_config' %}
+
+{% macro render_text_value(id, name, type, field) %}
+  <button type="button" class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#{{ id }}">
+    {{ 'Show value'|trans }}
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="{{ id }}" tabindex="-1" aria-labelledby="{{ id }}-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="{{ id }}-label">{{ name|trans }}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ 'Close'|trans }}"></button>
+        </div>
+        <div class="modal-body">
+          {% if type in [
+            constant('ItkDev\\ConfigBundle\\Entity\\Setting::TYPE_YAML'),
+          ] %}
+            <pre><code>{{ field.formattedValue }}</code></pre>
+          {% else %}
+            {{ field.formattedValue|raw }}
+          {% endif %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'Close'|trans }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
+<div class="setting-value setting-type-{{ type }}">
+  {% if type in [
+    constant('ItkDev\\ConfigBundle\\Entity\\Setting::TYPE_TEXT'),
+    constant('ItkDev\\ConfigBundle\\Entity\\Setting::TYPE_YAML'),
+  ] %}
+    {{ _self.render_text_value(id, name, type, field) }}
+  {% elseif type == constant('ItkDev\\ConfigBundle\\Entity\\Setting::TYPE_COLOR') %}
+    <input type="color" value="{{ field.formattedValue }}" disabled title="{{ field.formattedValue }}">
+  {% else %}
+    <span class="value">
+      {% apply spaceless %}
+        {% if field.formattedValue %}
+          {{ field.formattedVAlue }}
+        {% else %}
+          <span class="badge badge-secondary">{{ 'Empty'|trans }}</span>
+        {% endif %}
+      {% endapply %}
+    </span>
+  {% endif %}
+
+</div>

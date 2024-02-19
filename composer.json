@@ -10,41 +10,39 @@
         }
     ],
     "require": {
-        "symfony/symfony": "^3.0",
-        "doctrine/dbal": "^2.5",
-        "easycorp/easyadmin-bundle": "^1.17",
-        "craue/config-bundle": "~2.1",
-        "egeloen/ckeditor-bundle": "^6.0"
+        "php": "^8.2",
+        "easycorp/easyadmin-bundle": "^4.8",
+        "craue/config-bundle": "dev-feature/symfony-7"
     },
     "autoload": {
         "psr-4": {
-            "ItkDev\\ConfigBundle\\": ""
+            "ItkDev\\ConfigBundle\\": "src/"
         }
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.2",
-        "friendsofphp/php-cs-fixer": "^2.10"
+        "friendsofphp/php-cs-fixer": "^3.49"
     },
     "scripts": {
-        "check-coding-standards/php-cs-fixer": [
-            "php -n vendor/bin/php-cs-fixer --config=.php_cs.dist fix --dry-run"
+        "coding-standards-check/php-cs-fixer": [
+            "php-cs-fixer fix --dry-run"
         ],
-        "check-coding-standards/phpcs": [
-            "vendor/bin/phpcs --standard=phpcs.xml.dist"
+        "coding-standards-check": [
+            "@coding-standards-check/php-cs-fixer"
         ],
-        "check-coding-standards": [
-            "@check-coding-standards/php-cs-fixer",
-            "@check-coding-standards/phpcs"
+        "coding-standards-apply/php-cs-fixer": [
+            "php-cs-fixer fix"
         ],
-        "fix-coding-standards/php-cs-fixer": [
-            "php -n vendor/bin/php-cs-fixer --config=.php_cs.dist fix"
-        ],
-        "fix-coding-standards/phpcs": [
-            "vendor/bin/phpcbf --standard=phpcs.xml.dist"
-        ],
-        "fix-coding-standards": [
-            "@fix-coding-standards/php-cs-fixer",
-            "@fix-coding-standards/phpcs"
+        "coding-standards-apply": [
+            "@coding-standards-apply/php-cs-fixer"
         ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "repositories": {
+        "craue/config-bundle": {
+            "type": "vcs",
+            "url": "https://github.com/rimi-itk/CraueConfigBundle"
+        }
     }
 }

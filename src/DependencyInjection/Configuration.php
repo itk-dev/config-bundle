@@ -3,7 +3,7 @@
 /*
  * This file is part of itk-dev/config-bundle.
  *
- * (c) 2018 ITK Development
+ * (c) 2018–2024 ITK Development
  *
  * This source file is subject to the MIT license.
  */
@@ -20,13 +20,10 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('itk_dev_config');
+        $treeBuilder = new TreeBuilder('itk_dev_config');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()

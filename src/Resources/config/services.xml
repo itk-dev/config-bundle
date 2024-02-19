@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ItkDev\ConfigBundle\Service\FormHelper">
+            <argument id="security.authorization_checker" type="service"/>
+        </service>
+
+        <service id="ItkDev\ConfigBundle\Controller\Admin\SettingCrudController">
+            <argument id="ItkDev\ConfigBundle\Service\FormHelper" type="service"/>
+            <argument id="translator" type="service"/>
+        </service>
+    </services>
+</container>

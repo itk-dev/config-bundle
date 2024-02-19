@@ -1,30 +1,18 @@
 # Settings
 
+App config based on [CraueConfigBundle](https://github.com/craue/CraueConfigBundle) and [EasyAdmin](https://symfony.com/bundles/EasyAdminBundle/).
+
 ## Installation
 
-```sh
+```shell
 composer require itk-dev/settings-bundle "^1.0"
 ```
 
-Enable the bundle in `app/AppKernel.php`:
+## Configuration
 
-```php
-public function registerBundles() {
-	$bundles = [
-		// …
-        // Start of required dependencies of ItkDevConfigBundle
-        new Craue\ConfigBundle\CraueConfigBundle(),
-        new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
-        // End of required dependencies for ItkDevConfigBundle
-        new ItkDev\ConfigBundle\ItkDevConfigBundle(),
-	];
-    // …
-}
-```
-
-In `app/config/config.yml`:
-
-```yml
+```yaml
+# config/packages/craue_config.yaml
+# Cf. https://github.com/craue/CraueConfigBundle?tab=readme-ov-file#using-a-custom-entity-for-settings
 craue_config:
     entity_name: ItkDev\ConfigBundle\Entity\Setting
 
@@ -41,26 +29,28 @@ services:
 
 Depending on your doctrine setup, you may have to add `ItkDevConfigBundle` to your doctrine mappings, e.g.:
 
-```yml
+```yaml
+# config/packages/doctrine.yaml
 doctrine:
     orm:
         entity_managers:
             default:
                 mappings:
-                    …
+                    # …
+
                     ItkDevConfigBundle: ~
 ```
-
 
 If using [Doctrine
 migrations](https://github.com/doctrine/DoctrineMigrationsBundle), you
 should [filter out the `craue_config_setting` table from
 migrations](https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html#manual-tables):
 
-```yml
+```yaml
+# config/packages/doctrine.yaml
 doctrine:
     dbal:
-        [...]
+        # …
         schema_filter: ~^(?!craue_config_setting)~
 ```
 
@@ -80,22 +70,17 @@ values
     ('cms', 'about, 'text', 'text', 'This application handles configuration on the database.);
 ```
 
-Easy admin:
+### Twig
 
-See [Resources/config/easy_admin.yml](Resources/config/easy_admin.yml) for an example Easy Admin configuration for Settings.
+See <https://github.com/craue/CraueConfigBundle/#usage-in-twig-templates>.
 
-Twig:
+## Development
 
-See https://github.com/craue/CraueConfigBundle/#usage-in-twig-templates
+``` shell
+docker run --rm --volume ${PWD}:/app itkdev/php8.2-fpm:latest composer install
+```
 
+``` shell
+docker run --rm --volume ${PWD}:/app itkdev/php8.2-fpm:latest composer coding-standards-check
 
-
-## Rich text
-
-To use the form type `ckeditor`, you have to enable
-[IvoryCKEditorBundle](http://symfony.com/doc/master/bundles/IvoryCKEditorBundle/index.html)
-(which is already installed).
-
-Follow steps 2–4 on
-https://symfony.com/doc/master/bundles/EasyAdminBundle/integration/ivoryckeditorbundle.html#installing-the-rich-text-editor
-to enable the bundle.
+```
